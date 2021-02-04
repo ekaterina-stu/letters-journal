@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<form action="#" th:action="@{/form}" th:object="${entry}" method="post">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-10 mx-auto">
+    <table class="table table-striped">
+        <tr>
+            <td>Номер:</td>
+            <td><th:text th:text="${entry.number}"/></td>
+        </tr>
+        <tr>
+            <td>Дата:</td>
+            <td><input type="text"   th:value="${#temporals.format(localDate, 'dd-MM-yyyy')}" name="date" /></td>
+            <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Введите дату в формате дд-ММ-гггг</td>
+        </tr>
+        <tr>
+            <td>Организация:</td>
+            <td><input type="text" th:field="*{organization}"></td>
+            <td th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Поле Организация не может быть пустым</td>
+        </tr>
+        <tr>
+            <td>Тема:</td>
+            <td><input type="text" th:field="*{theme}"></td>
+            <td th:if="${#fields.hasErrors('theme')}" th:errors="*{theme}">Поле Тема не может быть пустым</td>
+        </tr>
+        <tr>
+            <td>Исполнитель:</td>
+            <td><input type="text" th:value="${entry.executor}" name="executor"></td>
+            <td th:if="${#fields.hasErrors('executor')}" th:errors="*{executor}">Поле Исполнитель не может быть пустым</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Сохранить</button>
+            </td>
+        </tr>
+    </table>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Организация</th>
+                    <th scope="col">Тема</th>
+                    <th scope="col">Исполнитель</th>
+                    <th scope="col">Пользователь</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="entry, i : ${entries}">
+                    <th scope="row" th:text="${i.index + 1}"></th>
+                    <td th:text="${entry.number}"></td>
+                    <td th:text="${entry.date}"></td>
+                    <td th:text="${entry.organization}"></td>
+                    <td th:text="${entry.theme}"></td>
+                    <td th:text="${entry.executor}"></td>
+                    <td th:text="${entry.user}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/form">
+                            <button>Вернуться к форме</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
