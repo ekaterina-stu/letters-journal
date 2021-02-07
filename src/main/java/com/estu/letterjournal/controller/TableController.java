@@ -1,6 +1,6 @@
-package com.example.handlingformsubmission.controller;
+package com.estu.letterjournal.controller;
 
-import com.example.handlingformsubmission.dto.Entry;
+import com.estu.letterjournal.dto.Entry;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +18,11 @@ public class TableController {
     @Value("${csv.path}")
     private String fileName;
 
+    @GetMapping("/")
+    public String redirect(Model model) {
+        return "redirect:/table";
+    }
+
     @GetMapping("/table")
     public String getTable(Model model) {
 
@@ -26,6 +31,7 @@ public class TableController {
             CsvToBean<Entry> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(Entry.class)
                     .withIgnoreLeadingWhiteSpace(true)
+                    .withKeepCarriageReturn(true)
                     .build();
 
             List<Entry> entries = csvToBean.parse();

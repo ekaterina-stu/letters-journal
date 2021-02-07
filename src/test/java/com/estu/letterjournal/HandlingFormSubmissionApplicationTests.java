@@ -1,4 +1,4 @@
-package com.example.handlingformsubmission;
+package com.estu.letterjournal;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

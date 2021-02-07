@@ -1,4 +1,4 @@
-package com.example.handlingformsubmission;
+package com.estu.letterjournal;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

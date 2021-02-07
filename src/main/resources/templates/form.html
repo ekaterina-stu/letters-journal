@@ -12,37 +12,62 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-10 mx-auto">
-    <table class="table table-striped">
-        <tr>
-            <td>Номер:</td>
-            <td><th:text th:text="${entry.number}"/></td>
-        </tr>
-        <tr>
-            <td>Дата:</td>
-            <td><input type="text"   th:value="${#temporals.format(localDate, 'dd-MM-yyyy')}" name="date" /></td>
-            <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Введите дату в формате дд-ММ-гггг</td>
-        </tr>
-        <tr>
-            <td>Организация:</td>
-            <td><input type="text" th:field="*{organization}"></td>
-            <td th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Поле Организация не может быть пустым</td>
-        </tr>
-        <tr>
-            <td>Тема:</td>
-            <td><input type="text" th:field="*{theme}"></td>
-            <td th:if="${#fields.hasErrors('theme')}" th:errors="*{theme}">Поле Тема не может быть пустым</td>
-        </tr>
-        <tr>
-            <td>Исполнитель:</td>
-            <td><input type="text" th:value="${entry.executor}" name="executor"></td>
-            <td th:if="${#fields.hasErrors('executor')}" th:errors="*{executor}">Поле Исполнитель не может быть пустым</td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit">Сохранить</button>
-            </td>
-        </tr>
-    </table>
+
+                    <table class="table">
+                        <form>
+                         <tr>
+                             <td>Номер:</td>
+                             <td><th:text th:text="${entry.number}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Дата:</td>
+                            <td><input type="text"   th:value="${#temporals.format(localDate, 'dd-MM-yyyy')}" name="date" />
+                                <span class="error" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Введите дату в формате дд-ММ-гггг</span> </td>
+                        </tr>
+                        <tr>
+                            <td>Организация:</td>
+                            <td><input type="text" th:field="*{organization}">
+                                <span class="error" th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Поле Организация должно быть заполнено</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Тема:</td>
+                            <td><input type="text" th:field="*{theme}">
+                                <span class="error" th:if="${#fields.hasErrors('theme')}" th:errors="*{theme}">Поле Тема должно быть заполнено</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Исполнитель:</td>
+                            <td><input type="text" th:value="${entry.executor}" name="executor">
+                                <span class="error" colspan="2" th:if="${#fields.hasErrors('executor')}" th:errors="*{executor}">Поле Исполнитель должно быть заполнено</span>
+                            </td>
+                        </tr>
+                        </form>
+
+                            <tr>
+                                <td>
+                                    <button type="submit">Сохранить</button>
+                                </td>
+                                <form th:action="@{/table}" method="get">
+                                    <td>
+                                        <input type="submit" value="Вернуться к таблице" formnovalidate/>
+                                    </td>
+                                </form>
+                            </tr>
+                            <tr>
+                                <form th:action="@{/logout}" method="post" >
+<td colspan="2">
+                                    <input type="submit" value="Выйти" formnovalidate/>
+</td>
+                                </form>
+                            </tr>
+
+                    </table>
+
+
+<!--                <form th:action="@{/logout}" method="post" >-->
+<!--                    <input type="submit" value="Sign Out" formnovalidate/>-->
+<!--                </form>-->
             </div>
         </div>
     </div>

@@ -1,10 +1,9 @@
-package com.example.handlingformsubmission.dto;
+package com.estu.letterjournal.dto;
 
 
 import com.opencsv.bean.CsvBindByName;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class Entry {
@@ -19,17 +18,17 @@ public class Entry {
 
 
     @CsvBindByName
-    @NotEmpty(message = "Поле Организация не может быть пустым")
+    @NotEmpty(message = "Поле Организация должно быть заполнено")
     private String organization;
 
 
     @CsvBindByName
-    @NotEmpty(message = "Поле Тема не может быть пустым")
+    @NotEmpty(message = "Поле Тема должно быть заполнено")
     private String theme;
 
 
     @CsvBindByName
-    @NotEmpty(message = "Поле Исполнитель не может быть пустым")
+    @NotEmpty(message = "Поле Исполнитель должно быть заполнено")
     private String executor;
 
     @CsvBindByName

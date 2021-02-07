@@ -2,19 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Spring Security Example </title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--Bootstrap 4-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
 </head>
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
 <form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+
+            <table class="table">
+
+
+
+
+        <tr>
+            <td>Имя пользователя</td>
+            <td>
+                <input type="text" name="username"/>
+                <span th:if="${param.error}">
+                    Invalid username and password.
+                </span>
+                <span th:if="${param.logout}">
+                    You have been logged out.
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Пароль</td>
+            <td>
+                <input type="password" name="password"/>
+            </td>
+        </tr>
+                <tr>
+                    <td colspan="3"><input type="submit" value="Sign In"/></td>
+                </tr>
+
+
+
+
+
+</table>
+<!--<form th:action="@{/login}" method="post">-->
+<!--    <div><label> User Name : <input type="text" name="username"/> </label></div>-->
+<!--    <div><label> Password: <input type="password" name="password"/> </label></div>-->
+<!--    -->
+<!--</form>-->
+        </div>
+    </div>
+</div>
 </form>
 </body>
 </html>

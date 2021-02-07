@@ -1,6 +1,6 @@
-package com.example.handlingformsubmission.controller;
+package com.estu.letterjournal.controller;
 
-import com.example.handlingformsubmission.dto.Entry;
+import com.estu.letterjournal.dto.Entry;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,11 +27,6 @@ public class FormController {
 
     @Value("${csv.num}")
     private String INITIAL_NUM;
-
-    @GetMapping("/")
-    public String redirect(Model model) {
-        return "redirect:/form";
-    }
 
     @GetMapping("/form")
     public String entryForm(Model model, Principal principal) {
@@ -85,6 +80,7 @@ public class FormController {
             CsvToBean<Entry> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(Entry.class)
                     .withIgnoreLeadingWhiteSpace(true)
+                    .withKeepCarriageReturn(true)
                     .build();
             List<Entry> entries = csvToBean.parse();
             String newNum;
